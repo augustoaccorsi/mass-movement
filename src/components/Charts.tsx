@@ -80,6 +80,7 @@ export function DonutChart({ data, maxItems = 8 }: { data: PieData[]; maxItems?:
           data={slice} dataKey="count" nameKey="name"
           cx="50%" cy="50%" innerRadius={55} outerRadius={90}
           paddingAngle={2} stroke="none"
+          activeShape={{ outerRadius: 96 }}
           label={({ pct }: { pct: number }) => `${pct.toFixed(1)}%`}
           labelLine={false}
         >
