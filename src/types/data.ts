@@ -10,6 +10,7 @@ export interface RawRow {
   legenda: string;
   ibgeN1: string;
   ibgeN2: string;
+  declivAula: number | null;
 }
 
 export interface ProcessedData {

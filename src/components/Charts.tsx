@@ -17,21 +17,16 @@ interface TooltipProps {
 
 export function CustomTooltip({ active, payload, label }: TooltipProps) {
   if (!active || !payload?.length) return null;
+  const name = label ?? (payload[0]?.payload?.name as string) ?? payload[0]?.name;
+  const value = payload[0]?.value;
   return (
     <div className="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg px-3 py-2 text-xs shadow-lg max-w-50">
       <div className="font-semibold text-slate-800 dark:text-slate-100 mb-1 wrap-break-word">
-        {label ?? (payload[0]?.payload?.name as string)}
+        {name}
       </div>
-      {payload.map(p => (
-        <div key={p.name} className="text-blue-500 dark:text-blue-400">
-          {p.name}:{' '}
-          <strong>
-            {typeof p.value === 'number'
-              ? p.value.toLocaleString('pt-BR', { maximumFractionDigits: 1 })
-              : p.value}
-          </strong>
-        </div>
-      ))}
+      <div className="text-blue-500 dark:text-blue-400">
+        Ocorrências: <strong>{typeof value === 'number' ? value.toLocaleString('pt-BR') : value}</strong>
+      </div>
     </div>
   );
 }
@@ -84,13 +79,13 @@ export function DonutChart({ data, maxItems = 8 }: { data: PieData[]; maxItems?:
         <Pie
           data={slice} dataKey="count" nameKey="name"
           cx="50%" cy="50%" innerRadius={55} outerRadius={90}
-          paddingAngle={2}
+          paddingAngle={2} stroke="none"
           label={({ pct }: { pct: number }) => `${pct.toFixed(1)}%`}
           labelLine={false}
         >
           {slice.map((_, i) => <Cell key={i} fill={COLORS[i % COLORS.length]} />)}
         </Pie>
-        <Tooltip formatter={(val: number, name: string) => [val.toLocaleString('pt-BR'), name]} />
+        <Tooltip content={<CustomTooltip />} />
         <Legend
           formatter={(v: string) => ((v.length > 28 ? v.slice(0, 27) + '…' : v) as string)}
           wrapperStyle={{ fontSize: 10 }}

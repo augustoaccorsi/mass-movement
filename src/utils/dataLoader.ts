@@ -1,5 +1,5 @@
 import Papa from 'papaparse';
-import { normalizeText } from './normalize';
+import { normalizeText, normalizeDeclive } from './normalize';
 import type {
   RawRow,
   ProcessedData,
@@ -79,13 +79,14 @@ export async function loadData(): Promise<ProcessedData> {
     unidade: normalizeText(r['UNIDADE'] ?? ''),
     soloEmbra: normalizeText(r['SOLO_EMBRA'] ?? ''),
     matOrigem: normalizeText(r['MAT_ORIGEM'] ?? ''),
-    declive: normalizeText(r['DECLIVE'] ?? ''),
+    declive: normalizeDeclive(r['DECLIVE'] ?? ''),
     drenagem: normalizeText(r['DRENAGEM'] ?? ''),
     textura: normalizeText(r['TEXTURA'] ?? ''),
     profundSo: normalizeText(r['PROFUND_SO'] ?? ''),
     legenda: normalizeText(r['LEGENDA'] ?? ''),
     ibgeN1: normalizeText(r['IBGE_N1'] ?? ''),
     ibgeN2: normalizeText(r['IBGE_N2'] ?? ''),
+    declivAula: r['DECLIVIDADE_AULA'] ? parseInt(r['DECLIVIDADE_AULA'], 10) : null,
   })).filter(r => !isNaN(r.area) && r.area > 0);
 
   const totalArea = rows.reduce((s, r) => s + r.area, 0);

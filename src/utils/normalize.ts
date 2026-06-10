@@ -33,3 +33,9 @@ export function normalizeText(s: string): string {
   });
   return out;
 }
+
+/** Append % unit to declive range values like "5 a 8" → "5% a 8%" */
+export function normalizeDeclive(s: string): string {
+  const base = normalizeText(s);
+  return base.replace(/(\d+)\s*a\s*(\d+)/, '$1% a $2%');
+}
