@@ -20,7 +20,7 @@ export function CombinationsTable({ combinations }: { combinations: CombinationI
           <tr className="border-b border-slate-200 dark:border-slate-700">
             {[
               t('table.rank'), t('table.unit'), t('table.soil'), t('table.origin'),
-              t('table.slope'), t('table.drainage'), t('table.texture'), t('table.cover'),
+              t('table.slope'), t('table.slopeAula'), t('table.drainage'), t('table.texture'), t('table.cover'),
               t('table.count'), t('table.pct'),
             ].map(h => (
               <th key={h} className="text-left text-[0.68rem] font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 px-3 py-2.5 whitespace-nowrap">
@@ -45,6 +45,13 @@ export function CombinationsTable({ combinations }: { combinations: CombinationI
               <td className="px-3 py-2 text-slate-700 dark:text-slate-300" title={c.solo}>{truncate(c.solo, 32)}</td>
               <td className="px-3 py-2 text-slate-700 dark:text-slate-300">{c.matOrigem}</td>
               <td className="px-3 py-2 text-slate-700 dark:text-slate-300">{c.declive}</td>
+              <td className="px-3 py-2">
+                {c.declivAula !== null ? (
+                  <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-amber-50 dark:bg-amber-950 text-amber-600 dark:text-amber-400 text-[0.68rem] font-bold">
+                    {c.declivAula}
+                  </span>
+                ) : <span className="text-slate-400">—</span>}
+              </td>
               <td className="px-3 py-2 text-slate-700 dark:text-slate-300">{c.drenagem}</td>
               <td className="px-3 py-2 text-slate-700 dark:text-slate-300">{c.textura}</td>
               <td className="px-3 py-2 text-slate-700 dark:text-slate-300" title={c.legenda}>{truncate(c.legenda, 26)}</td>

@@ -45,6 +45,7 @@ export interface CombinationItem {
   solo: string;
   matOrigem: string;
   declive: string;
+  declivAula: number | null;
   drenagem: string;
   textura: string;
   legenda: string;

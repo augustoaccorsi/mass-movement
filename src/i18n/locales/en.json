@@ -53,6 +53,7 @@
     "soil": "Soil",
     "origin": "Parent Mat.",
     "slope": "Slope",
+    "slopeAula": "Slope (calc.)",
     "drainage": "Drainage",
     "texture": "Texture",
     "cover": "Cover",

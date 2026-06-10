@@ -37,13 +37,14 @@ function freqMap(
 function topCombinations(rows: RawRow[], top = 15): CombinationItem[] {
   const map: Record<string, CombinationItem> = {};
   for (const r of rows) {
-    const key = [r.unidade, r.soloEmbra, r.matOrigem, r.declive, r.drenagem, r.textura, r.legenda].join('||');
+    const key = [r.unidade, r.soloEmbra, r.matOrigem, r.declive, String(r.declivAula), r.drenagem, r.textura, r.legenda].join('||');
     if (!map[key]) {
       map[key] = {
         unidade: r.unidade,
         solo: r.soloEmbra,
         matOrigem: r.matOrigem,
         declive: r.declive,
+        declivAula: r.declivAula,
         drenagem: r.drenagem,
         textura: r.textura,
         legenda: r.legenda,

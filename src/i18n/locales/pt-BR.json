@@ -53,6 +53,7 @@
     "soil": "Solo",
     "origin": "Mat. Origem",
     "slope": "Declive",
+    "slopeAula": "Decliv. Aula",
     "drainage": "Drenagem",
     "texture": "Textura",
     "cover": "Cobertura",
