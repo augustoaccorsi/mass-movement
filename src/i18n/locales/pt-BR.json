@@ -1,0 +1,68 @@
+{
+  "header": {
+    "title": "Movimentos de Massa — Veranópolis/RS",
+    "subtitle": "Análise exploratória das variáveis ambientais",
+    "themeLight": "Claro",
+    "themeDark": "Escuro"
+  },
+  "loading": "Carregando dados...",
+  "error": "Erro ao carregar os dados.",
+  "stats": {
+    "totalOccurrences": "Total de Ocorrências",
+    "totalArea": "Área Total",
+    "hectares": "hectares",
+    "uniqueCombinations": "Combinações Únicas",
+    "ofVariables": "de variáveis",
+    "dominantSoil": "Solo Dominante",
+    "dominantCover": "Cobertura Dominante"
+  },
+  "sections": {
+    "overview": "Visão Geral",
+    "combinations": "Combinações Mais Frequentes",
+    "combinationsSubtitle": "Quais combinações de variáveis são mais frequentes nos movimentos de massa?",
+    "unidade": "Unidade / Fácie Geológica",
+    "soilTypes": "Tipos de Solo",
+    "landCover": "Cobertura do Solo",
+    "terrain": "Características do Terreno",
+    "geology": "Material de Origem e Textura",
+    "drainage": "Drenagem e Profundidade",
+    "ibgeClasses": "Classificação IBGE"
+  },
+  "charts": {
+    "frequency": "Frequência (nº de ocorrências)",
+    "area": "Área (m²)",
+    "areaPct": "% da Área Total",
+    "occurrences": "Ocorrências",
+    "percentage": "Percentual",
+    "unit": "Facie/Unidade",
+    "soil": "Solo (EMBRAPA)",
+    "origin": "Material de Origem",
+    "slope": "Declive (%)",
+    "drainage": "Drenagem",
+    "texture": "Textura",
+    "depth": "Profundidade do Solo",
+    "legend": "Legenda de Cobertura",
+    "ibgeN1": "IBGE Nível 1",
+    "ibgeN2": "IBGE Nível 2",
+    "count": "Contagem",
+    "areaPctShort": "Área %"
+  },
+  "table": {
+    "rank": "#",
+    "unit": "Unidade/Fácie",
+    "soil": "Solo",
+    "origin": "Mat. Origem",
+    "slope": "Declive",
+    "drainage": "Drenagem",
+    "texture": "Textura",
+    "cover": "Cobertura",
+    "count": "Ocorrências",
+    "pct": "% Total",
+    "area": "Área (m²)"
+  },
+  "tooltip": {
+    "occurrences": "Ocorrências",
+    "percentage": "Percentual",
+    "area": "Área"
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "header": {
+    "title": "Mass Movements — Veranópolis/RS",
+    "subtitle": "Exploratory analysis of environmental variables",
+    "themeLight": "Light",
+    "themeDark": "Dark"
+  },
+  "loading": "Loading data...",
+  "error": "Failed to load data.",
+  "stats": {
+    "totalOccurrences": "Total Occurrences",
+    "totalArea": "Total Area",
+    "hectares": "hectares",
+    "uniqueCombinations": "Unique Combinations",
+    "ofVariables": "of variables",
+    "dominantSoil": "Dominant Soil",
+    "dominantCover": "Dominant Cover"
+  },
+  "sections": {
+    "overview": "Overview",
+    "combinations": "Most Frequent Combinations",
+    "combinationsSubtitle": "Which variable combinations are most frequent in mass movements?",
+    "unidade": "Unit / Geological Facies",
+    "soilTypes": "Soil Types",
+    "landCover": "Land Cover",
+    "terrain": "Terrain Characteristics",
+    "geology": "Parent Material & Texture",
+    "drainage": "Drainage & Depth",
+    "ibgeClasses": "IBGE Classification"
+  },
+  "charts": {
+    "frequency": "Frequency (no. of occurrences)",
+    "area": "Area (m²)",
+    "areaPct": "% of Total Area",
+    "occurrences": "Occurrences",
+    "percentage": "Percentage",
+    "unit": "Facies/Unit",
+    "soil": "Soil (EMBRAPA)",
+    "origin": "Parent Material",
+    "slope": "Slope (%)",
+    "drainage": "Drainage",
+    "texture": "Texture",
+    "depth": "Soil Depth",
+    "legend": "Cover Legend",
+    "ibgeN1": "IBGE Level 1",
+    "ibgeN2": "IBGE Level 2",
+    "count": "Count",
+    "areaPctShort": "Area %"
+  },
+  "table": {
+    "rank": "#",
+    "unit": "Unit/Facies",
+    "soil": "Soil",
+    "origin": "Parent Mat.",
+    "slope": "Slope",
+    "drainage": "Drainage",
+    "texture": "Texture",
+    "cover": "Cover",
+    "count": "Occurrences",
+    "pct": "% Total",
+    "area": "Area (m²)"
+  },
+  "tooltip": {
+    "occurrences": "Occurrences",
+    "percentage": "Percentage",
+    "area": "Area"
+  }
+}
