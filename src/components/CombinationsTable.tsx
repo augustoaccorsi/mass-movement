@@ -45,12 +45,8 @@ export function CombinationsTable({ combinations }: { combinations: CombinationI
               <td className="px-3 py-2 text-slate-700 dark:text-slate-300" title={c.solo}>{truncate(c.solo, 32)}</td>
               <td className="px-3 py-2 text-slate-700 dark:text-slate-300">{c.matOrigem}</td>
               <td className="px-3 py-2 text-slate-700 dark:text-slate-300">{c.declive}</td>
-              <td className="px-3 py-2">
-                {c.declivAula !== null ? (
-                  <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-amber-50 dark:bg-amber-950 text-amber-600 dark:text-amber-400 text-[0.68rem] font-bold">
-                    {c.declivAula}
-                  </span>
-                ) : <span className="text-slate-400">—</span>}
+              <td className="px-3 py-2 text-slate-700 dark:text-slate-300">
+                {c.declivAula !== null ? c.declivAula : '—'}
               </td>
               <td className="px-3 py-2 text-slate-700 dark:text-slate-300">{c.drenagem}</td>
               <td className="px-3 py-2 text-slate-700 dark:text-slate-300">{c.textura}</td>
