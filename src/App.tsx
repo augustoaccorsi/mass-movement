@@ -70,7 +70,7 @@ export function App() {
     return (
       <>
         <Header theme={theme} onToggle={toggleTheme} />
-        <div className="max-w-7xl mx-auto px-6 pb-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 pb-12 sm:pb-16">
           <div className="flex flex-col items-center justify-center min-h-[60vh] gap-4 text-slate-500 dark:text-slate-400">
             <span className="text-4xl">⚠️</span>
             <p>{t('error')}</p>
@@ -85,7 +85,7 @@ export function App() {
     return (
       <>
         <Header theme={theme} onToggle={toggleTheme} />
-        <div className="max-w-7xl mx-auto px-6 pb-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 pb-12 sm:pb-16">
           <div className="flex flex-col items-center justify-center min-h-[60vh] gap-4 text-slate-500 dark:text-slate-400">
             <div className="spinner" />
             <p>{t('loading')}</p>
@@ -98,13 +98,13 @@ export function App() {
   return (
     <>
       <Header theme={theme} onToggle={toggleTheme} />
-      <div className="max-w-7xl mx-auto px-6 pb-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 pb-12 sm:pb-16">
         <StatsCards data={data} />
 
-        <div className="my-8">
+        <div className="my-6 sm:my-8">
           <div className="flex items-center gap-2 mb-2">
-            <span className="block w-1 h-5 rounded bg-blue-600 dark:bg-blue-400" />
-            <h2 className="text-base font-bold text-slate-800 dark:text-slate-100">
+            <span className="block w-1 h-5 rounded bg-blue-600 dark:bg-blue-400 shrink-0" />
+            <h2 className="text-sm sm:text-base font-bold text-slate-800 dark:text-slate-100">
               {t('sections.combinations')}
             </h2>
           </div>

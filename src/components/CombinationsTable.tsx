@@ -11,6 +11,10 @@ export function CombinationsTable({ combinations }: { combinations: CombinationI
 
   return (
     <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl shadow-sm overflow-x-auto">
+      {/* scroll hint visible only on small screens */}
+      <p className="text-[0.65rem] text-slate-400 dark:text-slate-500 px-3 pt-2 sm:hidden">
+        ← deslize para ver mais →
+      </p>
       <table className="w-full text-xs">
         <thead>
           <tr className="border-b border-slate-200 dark:border-slate-700">

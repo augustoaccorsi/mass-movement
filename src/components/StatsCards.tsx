@@ -5,29 +5,23 @@ function fmt(n: number) {
   return n.toLocaleString('pt-BR', { maximumFractionDigits: 0 });
 }
 
-interface CardProps {
-  label: string;
-  value: string;
-  sub: string;
-}
+interface CardProps { label: string; value: string; sub: string; }
 
 function Card({ label, value, sub }: CardProps) {
   return (
-    <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-5 shadow-sm">
-      <div className="text-xs font-semibold uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-2">
+    <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl p-4 sm:p-5 shadow-sm">
+      <div className="text-[0.65rem] sm:text-xs font-semibold uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-2">
         {label}
       </div>
-      <div className="text-3xl font-extrabold text-blue-600 dark:text-blue-400 leading-none">
+      <div className="text-2xl sm:text-3xl font-extrabold text-blue-600 dark:text-blue-400 leading-none break-all">
         {value}
       </div>
-      <div className="text-xs text-slate-500 dark:text-slate-400 mt-1">{sub}</div>
+      <div className="text-[0.65rem] sm:text-xs text-slate-500 dark:text-slate-400 mt-1 leading-snug">{sub}</div>
     </div>
   );
 }
 
-interface Props {
-  data: ProcessedData;
-}
+interface Props { data: ProcessedData; }
 
 export function StatsCards({ data }: Props) {
   const { t } = useTranslation();
@@ -39,7 +33,7 @@ export function StatsCards({ data }: Props) {
   ).size;
 
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 my-6">
+    <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-5 gap-3 sm:gap-4 my-6">
       <Card label={t('stats.totalOccurrences')} value={fmt(data.totalRows)} sub="registros geoespaciais" />
       <Card label={t('stats.totalArea')} value={hectares} sub={t('stats.hectares')} />
       <Card label={t('stats.uniqueCombinations')} value={String(uniqueCombos)} sub={t('stats.ofVariables')} />

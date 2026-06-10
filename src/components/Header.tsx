@@ -17,19 +17,19 @@ export function Header({ theme, onToggle }: Props) {
 
   return (
     <header className="sticky top-0 z-50 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-700 shadow-sm">
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-16 gap-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-14 sm:h-16 gap-3">
 
-        <div className="flex flex-col">
-          <h1 className="text-base font-bold text-slate-900 dark:text-slate-100 leading-tight">
+        <div className="flex flex-col min-w-0">
+          <h1 className="text-sm sm:text-base font-bold text-slate-900 dark:text-slate-100 leading-tight truncate">
             {t('header.title')}
           </h1>
-          <span className="text-xs text-slate-500 dark:text-slate-400">
+          <span className="text-[0.65rem] sm:text-xs text-slate-500 dark:text-slate-400 truncate hidden sm:block">
             {t('header.subtitle')}
           </span>
         </div>
 
-        <div className="flex items-center gap-1.5">
-          {/* Language switcher — segmented pill group */}
+        <div className="flex items-center gap-1.5 shrink-0">
+          {/* Language switcher */}
           <div className="flex items-center bg-slate-100 dark:bg-slate-800 rounded-lg p-0.5 gap-0.5">
             {LANGUAGES.map(({ code, label, flag }) => {
               const active = currentLng === code;
@@ -39,10 +39,10 @@ export function Header({ theme, onToggle }: Props) {
                   onClick={() => i18n.changeLanguage(code)}
                   title={label}
                   className={[
-                    'flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold transition-all duration-150 cursor-pointer',
+                    'flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-md text-xs font-semibold transition-all duration-150 cursor-pointer',
                     active
-                      ? 'bg-slate-700 dark:bg-slate-600 text-white shadow-sm rounded-md'
-                      : 'text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 rounded-md',
+                      ? 'bg-slate-700 dark:bg-slate-600 text-white shadow-sm'
+                      : 'text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200',
                   ].join(' ')}
                 >
                   <span>{flag}</span>
@@ -52,7 +52,7 @@ export function Header({ theme, onToggle }: Props) {
             })}
           </div>
 
-          {/* Icon-only theme toggle — no border, just icon */}
+          {/* Icon-only theme toggle */}
           <button
             onClick={onToggle}
             title={theme === 'dark' ? t('header.themeLight') : t('header.themeDark')}
