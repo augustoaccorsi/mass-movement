@@ -58,7 +58,7 @@ export function HorizontalBarChart({ data, dataKey = 'count', label, maxItems = 
           axisLine={false}
           tickFormatter={(v: string) => v.length > 22 ? v.slice(0, 21) + '…' : v}
         />
-        <Tooltip content={<CustomTooltip />} />
+        <Tooltip content={<CustomTooltip />} cursor={{ fill: 'rgba(148,163,184,0.08)' }} />
         <Bar dataKey={dataKey} name={label ?? dataKey} radius={[0, 4, 4, 0]}>
           {slice.map((_, i) => (
             <Cell key={i} fill={COLORS[(i + colorOffset) % COLORS.length]} />
