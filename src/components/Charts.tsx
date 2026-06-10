@@ -80,7 +80,15 @@ export function DonutChart({ data, maxItems = 8 }: { data: PieData[]; maxItems?:
           data={slice} dataKey="count" nameKey="name"
           cx="50%" cy="50%" innerRadius={55} outerRadius={90}
           paddingAngle={2} stroke="none"
-          activeShape={{ outerRadius: 96 }}
+          activeShape={(props: unknown) => {
+            const { cx, cy, innerRadius, outerRadius, startAngle, endAngle, fill } = props as {
+              cx: number; cy: number; innerRadius: number; outerRadius: number;
+              startAngle: number; endAngle: number; fill: string;
+            };
+            // eslint-disable-next-line @typescript-eslint/no-require-imports
+            const { Sector } = require('recharts');
+            return <Sector cx={cx} cy={cy} innerRadius={innerRadius} outerRadius={outerRadius + 6} startAngle={startAngle} endAngle={endAngle} fill={fill} />;
+          }}
           label={({ pct }: { pct: number }) => `${pct.toFixed(1)}%`}
           labelLine={false}
         >
