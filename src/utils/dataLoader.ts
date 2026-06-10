@@ -34,7 +34,7 @@ function freqMap(
     .sort((a, b) => b.count - a.count);
 }
 
-function topCombinations(rows: RawRow[]): CombinationItem[] {
+function topCombinations(rows: RawRow[], top = 15): CombinationItem[] {
   const map: Record<string, CombinationItem> = {};
   for (const r of rows) {
     const key = [r.unidade, r.soloEmbra, r.matOrigem, r.declive, String(r.declivAula), r.drenagem, r.textura, r.legenda].join('||');
@@ -59,7 +59,8 @@ function topCombinations(rows: RawRow[]): CombinationItem[] {
   const total = rows.length;
   return Object.values(map)
     .map(c => ({ ...c, pct: (c.count / total) * 100 }))
-    .sort((a, b) => b.count - a.count);
+    .sort((a, b) => b.count - a.count)
+    .slice(0, top);
 }
 
 export async function loadData(): Promise<ProcessedData> {
