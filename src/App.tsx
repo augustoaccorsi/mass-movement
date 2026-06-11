@@ -111,7 +111,7 @@ export function App() {
           <p className="text-xs text-slate-500 dark:text-slate-400 mb-4">
             {t('sections.combinationsSubtitle')}
           </p>
-          <CombinationsTable combinations={data.topCombinations} />
+          <CombinationsTable combinations={data.topCombinations} totalRows={data.totalRows} />
         </div>
 
         <UnidadeSection data={data} />
