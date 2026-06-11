@@ -78,10 +78,15 @@ export async function loadData(): Promise<ProcessedData> {
     declivAula: declivAulaLabel(r['Declividade (calculada em aula)'] ? parseInt(r['Declividade (calculada em aula)'], 10) : null),
   })).filter(r => !isNaN(r.area) && r.area > 0);
 
+  const allCombos = new Set(
+    rows.map(r => [r.unidade, r.soloEmbra, r.matOrigem, r.declivAula, r.legenda].join('||'))
+  ).size;
+
   return {
     rows,
     totalRows: rows.length,
     totalArea: rows.reduce((s, r) => s + r.area, 0),
+    totalUniqueCombinations: allCombos,
     byUnidade: freqMap(rows, 'unidade'),
     bySolo: freqMap(rows, 'soloEmbra'),
     byMatOrigem: freqMap(rows, 'matOrigem'),

@@ -8,14 +8,14 @@ function truncate(s: string, n = 30) {
 interface Props {
   combinations: CombinationItem[];
   totalRows: number;
+  totalUnique: number;
 }
 
-export function CombinationsTable({ combinations, totalRows }: Props) {
+export function CombinationsTable({ combinations, totalRows, totalUnique }: Props) {
   const { t } = useTranslation();
   const max = combinations[0]?.count ?? 1;
   const shownCount = combinations.reduce((s, c) => s + c.count, 0);
   const shownPct = ((shownCount / totalRows) * 100).toFixed(1);
-  const totalUnique = combinations.length;
 
   return (
     <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl shadow-sm overflow-x-auto">
@@ -67,7 +67,7 @@ export function CombinationsTable({ combinations, totalRows }: Props) {
         <tfoot>
           <tr className="border-t-2 border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50">
             <td colSpan={6} className="px-3 py-2.5 text-[0.68rem] text-slate-500 dark:text-slate-400">
-              Top {totalUnique} de {totalRows} combinações únicas
+              Top {combinations.length} de {totalUnique} combinações únicas
             </td>
             <td className="px-3 py-2.5 font-bold text-slate-700 dark:text-slate-300">
               {shownCount.toLocaleString('pt-BR')}

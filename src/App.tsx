@@ -41,6 +41,11 @@ export function App() {
       : 'bg-slate-100 text-slate-900';
   }, [theme]);
 
+  // Update browser tab title when language changes
+  useEffect(() => {
+    document.title = t('header.title');
+  }, [t]);
+
   // Track system theme changes (only active when user hasn't overridden)
   useEffect(() => {
     const mq = window.matchMedia('(prefers-color-scheme: dark)');
@@ -108,7 +113,7 @@ export function App() {
           <p className="text-xs text-slate-500 dark:text-slate-400 mb-4">
             {t('sections.combinationsSubtitle')}
           </p>
-          <CombinationsTable combinations={data.topCombinations} totalRows={data.totalRows} />
+          <CombinationsTable combinations={data.topCombinations} totalRows={data.totalRows} totalUnique={data.totalUniqueCombinations} />
         </div>
 
         <UnidadeSection data={data} />

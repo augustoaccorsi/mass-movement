@@ -11,6 +11,7 @@ export interface ProcessedData {
   rows: RawRow[];
   totalRows: number;
   totalArea: number;
+  totalUniqueCombinations: number;
   byUnidade: FreqItem[];
   bySolo: FreqItem[];
   byMatOrigem: FreqItem[];
