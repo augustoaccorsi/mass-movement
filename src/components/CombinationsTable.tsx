@@ -58,7 +58,7 @@ export function CombinationsTable({ combinations, totalRows, totalUnique }: Prop
             <tr className="border-b border-slate-200 dark:border-slate-700">
               {[
                 t('table.rank'), t('table.unit'), t('table.soil'), t('table.origin'),
-                t('table.slopeAula'), t('table.cover'), t('table.count'), t('table.pct'),
+                t('table.slopeAula'), t('table.count'), t('table.pct'),
               ].map(h => (
                 <th key={h} className="text-left text-[0.68rem] font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 px-3 py-2.5 whitespace-nowrap">
                   {h}
@@ -69,7 +69,7 @@ export function CombinationsTable({ combinations, totalRows, totalUnique }: Prop
           <tbody>
             {filtered.length === 0 ? (
               <tr>
-                <td colSpan={8} className="px-3 py-8 text-center text-slate-400 dark:text-slate-500">
+                <td colSpan={7} className="px-3 py-8 text-center text-slate-400 dark:text-slate-500">
                   {t('table.noResults')}
                 </td>
               </tr>
@@ -88,7 +88,6 @@ export function CombinationsTable({ combinations, totalRows, totalUnique }: Prop
                 <td className="px-3 py-2 text-slate-700 dark:text-slate-300" title={c.solo}>{truncate(c.solo, 32)}</td>
                 <td className="px-3 py-2 text-slate-700 dark:text-slate-300">{c.matOrigem}</td>
                 <td className="px-3 py-2 text-slate-700 dark:text-slate-300">{c.declivAula}</td>
-                <td className="px-3 py-2 text-slate-700 dark:text-slate-300" title={c.legenda}>{truncate(c.legenda, 26)}</td>
                 <td className="px-3 py-2 font-bold text-slate-800 dark:text-slate-200">
                   {c.count.toLocaleString('pt-BR')}
                 </td>
@@ -103,7 +102,7 @@ export function CombinationsTable({ combinations, totalRows, totalUnique }: Prop
           </tbody>
           <tfoot>
             <tr className="border-t-2 border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50">
-              <td colSpan={6} className="px-3 py-2.5 text-[0.68rem] text-slate-500 dark:text-slate-400">
+              <td colSpan={5} className="px-3 py-2.5 text-[0.68rem] text-slate-500 dark:text-slate-400">
                 {search ? `${filtered.length} resultado(s) — ` : `Top ${combinations.length} de ${totalUnique} combinações únicas — `}
               </td>
               <td className="px-3 py-2.5 font-bold text-slate-700 dark:text-slate-300">

@@ -24,7 +24,7 @@ export function Header({ theme, onToggle }: Props) {
             {t('header.title')}
           </h1>
           <span className="text-[0.65rem] sm:text-xs text-slate-500 dark:text-slate-400 truncate hidden sm:block">
-            {t('header.subtitle')}
+            {t('header.subtitle')} · <span className="text-blue-600 dark:text-blue-400 font-medium">Daiana Rodrigues</span>
           </span>
         </div>
 
