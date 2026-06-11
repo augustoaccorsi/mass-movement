@@ -110,7 +110,7 @@ export function App() {
 
         <div className="my-6 sm:my-8">
           <div className="flex items-center gap-2 mb-2">
-            <span className="block w-1 h-5 rounded bg-blue-600 dark:bg-blue-400 shrink-0" />
+            <span className="block w-1 h-5 rounded bg-[#5c6e2e] dark:bg-[#8a9a4b] shrink-0" />
             <h2 className="text-sm sm:text-base font-bold text-slate-800 dark:text-slate-100">
               {t('sections.combinations')}
             </h2>
