@@ -11,6 +11,18 @@ const COLORS = [
   '#0891b2','#b45309','#047857','#6d28d9','#b91c1c',
 ];
 
+// Earthy olive/green palette matching the presentation style
+const DONUT_COLORS = [
+  '#5c6e2e', // olive green (dominant)
+  '#8a9a4b', // light olive
+  '#3d4f1e', // dark forest green
+  '#b5a96a', // warm tan
+  '#7a6c3a', // brown olive
+  '#4a5c28', // mid green
+  '#c8b882', // pale tan
+  '#2e3d18', // deep forest
+];
+
 interface TooltipProps {
   active?: boolean;
   payload?: { name: string; value: number; payload: Record<string, unknown> }[];
@@ -98,7 +110,7 @@ export function DonutChart({ data, maxItems = 8 }: { data: PieData[]; maxItems?:
           label={({ pct }: { pct: number }) => `${pct.toFixed(1)}%`}
           labelLine={false}
         >
-          {slice.map((_, i) => <Cell key={i} fill={COLORS[i % COLORS.length]} />)}
+          {slice.map((_, i) => <Cell key={i} fill={DONUT_COLORS[i % DONUT_COLORS.length]} />)}
         </Pie>
         <Tooltip content={<CustomTooltip />} />
         <Legend
