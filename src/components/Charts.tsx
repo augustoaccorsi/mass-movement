@@ -1,6 +1,6 @@
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip,
-  ResponsiveContainer, Cell, PieChart, Pie, Legend,
+  ResponsiveContainer, Cell, PieChart, Pie, Legend, Sector,
 } from 'recharts';
 
 const COLORS = [
@@ -85,8 +85,6 @@ export function DonutChart({ data, maxItems = 8 }: { data: PieData[]; maxItems?:
               cx: number; cy: number; innerRadius: number; outerRadius: number;
               startAngle: number; endAngle: number; fill: string;
             };
-            // eslint-disable-next-line @typescript-eslint/no-require-imports
-            const { Sector } = require('recharts');
             return <Sector cx={cx} cy={cy} innerRadius={innerRadius} outerRadius={outerRadius + 6} startAngle={startAngle} endAngle={endAngle} fill={fill} />;
           }}
           label={({ pct }: { pct: number }) => `${pct.toFixed(1)}%`}
