@@ -50,9 +50,16 @@ export function depthSortKey(s: string): number {
   return DEPTH_ORDER[s.trim()] ?? 99;
 }
 
-/** Sort order for declive range values — #3 fix */
-export function decliveSortKey(s: string): number {
-  // extract first number from "5% a 8%" or "5 a 8"
-  const match = s.match(/(\d+)/);
-  return match ? parseInt(match[1], 10) : 99;
+/** Map DECLIVIDADE_AULA numeric code to slope range label */
+const DECLIV_AULA_MAP: Record<number, string> = {
+  1: '< 6%',
+  2: '6 - 12%',
+  3: '12 - 20%',
+  4: '20 - 30%',
+  5: '> 30%',
+};
+
+export function declivAulaLabel(code: number | null): string {
+  if (code === null) return '—';
+  return DECLIV_AULA_MAP[code] ?? String(code);
 }

@@ -4,7 +4,7 @@ export interface RawRow {
   soloEmbra: string;
   matOrigem: string;
   legenda: string;
-  declivAula: number | null;
+  declivAula: string;
 }
 
 export interface ProcessedData {
@@ -31,7 +31,7 @@ export interface CombinationItem {
   unidade: string;
   solo: string;
   matOrigem: string;
-  declivAula: number | null;
+  declivAula: string;
   legenda: string;
   count: number;
   pct: number;

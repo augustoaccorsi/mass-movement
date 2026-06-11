@@ -1,5 +1,5 @@
 import Papa from 'papaparse';
-import { normalizeText } from './normalize';
+import { normalizeText, declivAulaLabel } from './normalize';
 import type {
   RawRow,
   ProcessedData,
@@ -75,7 +75,7 @@ export async function loadData(): Promise<ProcessedData> {
     soloEmbra: normalizeText(r['SOLO_EMBRA'] ?? ''),
     matOrigem: normalizeText(r['MAT_ORIGEM'] ?? ''),
     legenda: normalizeText(r['LEGENDA'] ?? ''),
-    declivAula: r['Declividade (calculada em aula)'] ? parseInt(r['Declividade (calculada em aula)'], 10) : null,
+    declivAula: declivAulaLabel(r['Declividade (calculada em aula)'] ? parseInt(r['Declividade (calculada em aula)'], 10) : null),
   })).filter(r => !isNaN(r.area) && r.area > 0);
 
   return {
@@ -86,7 +86,10 @@ export async function loadData(): Promise<ProcessedData> {
     bySolo: freqMap(rows, 'soloEmbra'),
     byMatOrigem: freqMap(rows, 'matOrigem'),
     byLegenda: freqMap(rows, 'legenda'),
-    byDeclivAula: freqMap(rows, 'declivAula').sort((a, b) => Number(a.name) - Number(b.name)),
+    byDeclivAula: freqMap(rows, 'declivAula').sort((a, b) => {
+      const order = ['< 6%', '6 - 12%', '12 - 20%', '20 - 30%', '> 30%'];
+      return order.indexOf(a.name) - order.indexOf(b.name);
+    }),
     topCombinations: topCombinations(rows),
   };
 }

@@ -50,9 +50,7 @@ export function CombinationsTable({ combinations, totalRows }: Props) {
               </td>
               <td className="px-3 py-2 text-slate-700 dark:text-slate-300" title={c.solo}>{truncate(c.solo, 32)}</td>
               <td className="px-3 py-2 text-slate-700 dark:text-slate-300">{c.matOrigem}</td>
-              <td className="px-3 py-2 text-slate-700 dark:text-slate-300">
-                {c.declivAula !== null ? c.declivAula : '—'}
-              </td>
+              <td className="px-3 py-2 text-slate-700 dark:text-slate-300">{c.declivAula}</td>
               <td className="px-3 py-2 text-slate-700 dark:text-slate-300" title={c.legenda}>{truncate(c.legenda, 26)}</td>
               <td className="px-3 py-2 font-bold text-slate-800 dark:text-slate-200">
                 {c.count.toLocaleString('pt-BR')}
