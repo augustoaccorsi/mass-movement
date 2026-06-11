@@ -46,7 +46,8 @@
     "areaPctShort": "Area %"
   },
   "table": {
-    "rank": "#",
+    "search": "Filter combinations...",
+    "noResults": "No results found.",
     "unit": "Unit/Facies",
     "soil": "Soil",
     "origin": "Parent Mat.",

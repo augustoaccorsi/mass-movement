@@ -46,7 +46,8 @@
     "areaPctShort": "Área %"
   },
   "table": {
-    "rank": "#",
+    "search": "Filtrar combinações...",
+    "noResults": "Nenhum resultado encontrado.",
     "unit": "Unidade/Fácie",
     "soil": "Solo",
     "origin": "Mat. Origem",

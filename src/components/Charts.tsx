@@ -1,6 +1,6 @@
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip,
-  ResponsiveContainer, Cell, PieChart, Pie, Legend, Sector,
+  ResponsiveContainer, Cell, PieChart, Pie, Legend, Sector, LabelList,
 } from 'recharts';
 
 const COLORS = [
@@ -63,6 +63,12 @@ export function HorizontalBarChart({ data, dataKey = 'count', label, maxItems = 
           {slice.map((_, i) => (
             <Cell key={i} fill={COLORS[(i + colorOffset) % COLORS.length]} />
           ))}
+          <LabelList
+            dataKey={dataKey}
+            position="right"
+            style={{ fontSize: 10, fill: 'var(--label-color, #64748b)' }}
+            formatter={(v: number) => v.toLocaleString('pt-BR')}
+          />
         </Bar>
       </BarChart>
     </ResponsiveContainer>
