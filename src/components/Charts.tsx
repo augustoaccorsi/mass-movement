@@ -6,14 +6,7 @@ import type { CrossItem } from '../types/data';
 
 
 const COLORS = [
-  '#3b82f6','#10b981','#f59e0b','#ef4444','#8b5cf6',
-  '#06b6d4','#d97706','#059669','#1d4ed8','#9333ea',
-  '#0891b2','#b45309','#047857','#6d28d9','#b91c1c',
-];
-
-// Earthy olive/green palette matching the presentation style
-const DONUT_COLORS = [
-  '#5c6e2e', // olive green (dominant)
+  '#5c6e2e', // olive green
   '#8a9a4b', // light olive
   '#3d4f1e', // dark forest green
   '#b5a96a', // warm tan
@@ -21,7 +14,17 @@ const DONUT_COLORS = [
   '#4a5c28', // mid green
   '#c8b882', // pale tan
   '#2e3d18', // deep forest
+  '#a0974e', // golden olive
+  '#6b7d35', // sage green
+  '#4f3d1a', // dark brown
+  '#9aac58', // yellow-green
+  '#d4c99a', // light sand
+  '#324020', // very dark green
+  '#c4a85a', // amber tan
 ];
+
+// Earthy olive/green palette matching the presentation style
+const DONUT_COLORS = COLORS;
 
 interface TooltipProps {
   active?: boolean;
