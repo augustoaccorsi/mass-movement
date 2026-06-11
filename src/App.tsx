@@ -10,6 +10,7 @@ import { useState } from 'react';
 import { Header } from './components/Header';
 import { StatsCards } from './components/StatsCards';
 import { CombinationsTable } from './components/CombinationsTable';
+import { DashboardSkeleton } from './components/Skeleton';
 import {
   UnidadeSection,
   SoilSection,
@@ -86,10 +87,7 @@ export function App() {
       <>
         <Header theme={theme} onToggle={toggleTheme} />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 pb-12 sm:pb-16">
-          <div className="flex flex-col items-center justify-center min-h-[60vh] gap-4 text-slate-500 dark:text-slate-400">
-            <div className="spinner" />
-            <p>{t('loading')}</p>
-          </div>
+          <DashboardSkeleton />
         </div>
       </>
     );
