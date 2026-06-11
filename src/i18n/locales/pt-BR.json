@@ -5,6 +5,12 @@
     "themeLight": "Claro",
     "themeDark": "Escuro"
   },
+  "highlight": {
+    "label": "Combinação Dominante",
+    "ofTotal": "do total de ocorrências",
+    "of": "de",
+    "occurrences": "ocorrências"
+  },
   "loading": "Carregando dados...",
   "error": "Erro ao carregar os dados.",
   "stats": {
@@ -24,7 +30,8 @@
     "soilTypes": "Tipos de Solo",
     "landCover": "Cobertura do Solo",
     "geology": "Material de Origem",
-    "slopeAula": "Declividade (calculada em aula)"
+    "slopeAula": "Declividade (calculada em aula)",
+    "crossAnalysis": "Análise Cruzada de Variáveis"
   },
   "charts": {
     "frequency": "Frequência (nº de ocorrências)",
@@ -32,7 +39,8 @@
     "areaPct": "% da Área Total",
     "occurrences": "Ocorrências",
     "percentage": "Percentual",
-    "unit": "Facie/Unidade",
+    "soloByUnidade": "Solo por Unidade/Fácie",
+    "legendaByDecliv": "Cobertura por Declividade",
     "soil": "Solo (EMBRAPA)",
     "origin": "Material de Origem",
     "slopeAula": "Declividade (Aula)",

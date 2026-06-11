@@ -10,6 +10,7 @@ import { useState } from 'react';
 import { Header } from './components/Header';
 import { StatsCards } from './components/StatsCards';
 import { CombinationsTable } from './components/CombinationsTable';
+import { TopCombinationCard } from './components/TopCombinationCard';
 import { DashboardSkeleton } from './components/Skeleton';
 import {
   UnidadeSection,
@@ -17,6 +18,7 @@ import {
   LandCoverSection,
   GeologySection,
   DeclivAulaSection,
+  CrossSection,
 } from './components/Sections';
 
 type Theme = 'light' | 'dark';
@@ -102,6 +104,9 @@ export function App() {
       <Header theme={theme} onToggle={toggleTheme} />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 pb-12 sm:pb-16">
         <StatsCards data={data} />
+        {data.topCombinations[0] && (
+          <TopCombinationCard top={data.topCombinations[0]} totalRows={data.totalRows} />
+        )}
 
         <div className="my-6 sm:my-8">
           <div className="flex items-center gap-2 mb-2">
@@ -121,6 +126,7 @@ export function App() {
         <LandCoverSection data={data} />
         <GeologySection data={data} />
         <DeclivAulaSection data={data} />
+        <CrossSection data={data} />
       </div>
     </>
   );

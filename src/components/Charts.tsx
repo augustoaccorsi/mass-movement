@@ -2,6 +2,8 @@ import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip,
   ResponsiveContainer, Cell, PieChart, Pie, Legend, Sector, LabelList,
 } from 'recharts';
+import type { CrossItem } from '../types/data';
+
 
 const COLORS = [
   '#3b82f6','#10b981','#f59e0b','#ef4444','#8b5cf6',
@@ -104,6 +106,47 @@ export function DonutChart({ data, maxItems = 8 }: { data: PieData[]; maxItems?:
           wrapperStyle={{ fontSize: 10 }}
         />
       </PieChart>
+    </ResponsiveContainer>
+  );
+}
+
+interface StackedBarProps {
+  data: CrossItem[];
+  keys: string[];
+  label?: string;
+}
+
+export function StackedBarChart({ data, keys, label }: StackedBarProps) {
+  const height = Math.max(220, data.length * 44);
+  return (
+    <ResponsiveContainer width="100%" height={height}>
+      <BarChart data={data} layout="vertical" margin={{ top: 0, right: 16, left: 4, bottom: 0 }}>
+        <CartesianGrid strokeDasharray="3 3" horizontal={false} />
+        <XAxis type="number" tick={{ fontSize: 10 }} tickLine={false} axisLine={false} />
+        <YAxis
+          type="category"
+          dataKey="name"
+          width={160}
+          tick={{ fontSize: 10 }}
+          tickLine={false}
+          axisLine={false}
+          tickFormatter={(v: string) => v.length > 22 ? v.slice(0, 21) + '…' : v}
+        />
+        <Tooltip
+          content={<CustomTooltip />}
+          cursor={{ fill: 'rgba(148,163,184,0.08)' }}
+        />
+        <Legend
+          formatter={(v: string) => ((v.length > 28 ? v.slice(0, 27) + '…' : v) as string)}
+          wrapperStyle={{ fontSize: 10 }}
+        />
+        {keys.map((k, i) => (
+          <Bar key={k} dataKey={k} name={label ? `${k}` : k} stackId="a"
+            fill={COLORS[i % COLORS.length]}
+            radius={i === keys.length - 1 ? [0, 4, 4, 0] : [0, 0, 0, 0]}
+          />
+        ))}
+      </BarChart>
     </ResponsiveContainer>
   );
 }

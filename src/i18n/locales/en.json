@@ -5,6 +5,12 @@
     "themeLight": "Light",
     "themeDark": "Dark"
   },
+  "highlight": {
+    "label": "Dominant Combination",
+    "ofTotal": "of total occurrences",
+    "of": "of",
+    "occurrences": "occurrences"
+  },
   "loading": "Loading data...",
   "error": "Failed to load data.",
   "stats": {
@@ -24,7 +30,8 @@
     "soilTypes": "Soil Types",
     "landCover": "Land Cover",
     "geology": "Parent Material",
-    "slopeAula": "Slope (calculated in class)"
+    "slopeAula": "Slope (calculated in class)",
+    "crossAnalysis": "Cross-Variable Analysis"
   },
   "charts": {
     "frequency": "Frequency (no. of occurrences)",
@@ -32,7 +39,8 @@
     "areaPct": "% of Total Area",
     "occurrences": "Occurrences",
     "percentage": "Percentage",
-    "unit": "Facies/Unit",
+    "soloByUnidade": "Soil by Geological Unit",
+    "legendaByDecliv": "Cover by Slope Class",
     "soil": "Soil (EMBRAPA)",
     "origin": "Parent Material",
     "slopeAula": "Slope (Class)",

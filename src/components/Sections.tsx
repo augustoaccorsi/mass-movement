@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import type { ProcessedData } from '../types/data';
-import { HorizontalBarChart, DonutChart } from './Charts';
+import { HorizontalBarChart, DonutChart, StackedBarChart } from './Charts';
 
 interface Props { data: ProcessedData; }
 
@@ -103,6 +103,27 @@ export function DeclivAulaSection({ data }: Props) {
         </ChartCard>
         <ChartCard title={`${t('charts.slopeAula')} — ${t('charts.areaPct')}`}>
           <DonutChart data={data.byDeclivAula} />
+        </ChartCard>
+      </div>
+    </div>
+  );
+}
+
+export function CrossSection({ data }: Props) {
+  const { t } = useTranslation();
+
+  const soloKeys = [...new Set(data.crossSoloByUnidade.flatMap(r => Object.keys(r).filter(k => k !== 'name')))];
+  const legendaKeys = [...new Set(data.crossLegendaByDecliv.flatMap(r => Object.keys(r).filter(k => k !== 'name')))];
+
+  return (
+    <div className="my-6 sm:my-8">
+      <SectionTitle>{t('sections.crossAnalysis')}</SectionTitle>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-4">
+        <ChartCard title={t('charts.soloByUnidade')}>
+          <StackedBarChart data={data.crossSoloByUnidade} keys={soloKeys} />
+        </ChartCard>
+        <ChartCard title={t('charts.legendaByDecliv')}>
+          <StackedBarChart data={data.crossLegendaByDecliv} keys={legendaKeys} />
         </ChartCard>
       </div>
     </div>

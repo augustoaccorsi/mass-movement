@@ -18,6 +18,8 @@ export interface ProcessedData {
   byLegenda: FreqItem[];
   byDeclivAula: FreqItem[];
   topCombinations: CombinationItem[];
+  crossSoloByUnidade: CrossItem[];
+  crossLegendaByDecliv: CrossItem[];
 }
 
 export interface FreqItem {

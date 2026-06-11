@@ -5,6 +5,7 @@ import type {
   ProcessedData,
   FreqItem,
   CombinationItem,
+  CrossItem,
 } from '../types/data';
 
 type ParsedRecord = Record<string, string>;
@@ -57,6 +58,51 @@ function topCombinations(rows: RawRow[], top = 15): CombinationItem[] {
     .slice(0, top);
 }
 
+/** Build a cross-analysis: rows = groupBy values, columns = splitBy values, values = count */
+function crossAnalysis(
+  rows: RawRow[],
+  groupBy: keyof RawRow,
+  splitBy: keyof RawRow,
+  topGroups = 8,
+  topSplit = 5
+): CrossItem[] {
+  // count occurrences per (group, split) pair
+  const map: Record<string, Record<string, number>> = {};
+  for (const r of rows) {
+    const g = String(r[groupBy]);
+    const s = String(r[splitBy]);
+    if (!map[g]) map[g] = {};
+    map[g][s] = (map[g][s] ?? 0) + 1;
+  }
+
+  // pick top split keys by total frequency
+  const splitTotals: Record<string, number> = {};
+  for (const g of Object.values(map))
+    for (const [s, n] of Object.entries(g))
+      splitTotals[s] = (splitTotals[s] ?? 0) + n;
+
+  const topSplitKeys = Object.entries(splitTotals)
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, topSplit)
+    .map(([k]) => k);
+
+  // pick top group keys by total frequency
+  const groupTotals: Record<string, number> = {};
+  for (const [g, counts] of Object.entries(map))
+    groupTotals[g] = Object.values(counts).reduce((s, n) => s + n, 0);
+
+  const topGroupKeys = Object.entries(groupTotals)
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, topGroups)
+    .map(([k]) => k);
+
+  return topGroupKeys.map(g => {
+    const item: CrossItem = { name: g };
+    for (const s of topSplitKeys) item[s] = map[g]?.[s] ?? 0;
+    return item;
+  });
+}
+
 export async function loadData(): Promise<ProcessedData> {
   const resp = await fetch('/data/data.csv');
   if (!resp.ok) throw new Error(`Failed to load data: ${resp.status}`);
@@ -96,5 +142,7 @@ export async function loadData(): Promise<ProcessedData> {
       return order.indexOf(a.name) - order.indexOf(b.name);
     }),
     topCombinations: topCombinations(rows),
+    crossSoloByUnidade: crossAnalysis(rows, 'unidade', 'soloEmbra', 5, 4),
+    crossLegendaByDecliv: crossAnalysis(rows, 'declivAula', 'legenda', 5, 5),
   };
 }
