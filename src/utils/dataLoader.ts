@@ -1,5 +1,5 @@
 import Papa from 'papaparse';
-import { normalizeText, normalizeDeclive } from './normalize';
+import { normalizeText, normalizeDeclive, depthSortKey, decliveSortKey } from './normalize';
 import type {
   RawRow,
   ProcessedData,
@@ -99,10 +99,10 @@ export async function loadData(): Promise<ProcessedData> {
     byUnidade: freqMap(rows, 'unidade'),
     bySolo: freqMap(rows, 'soloEmbra'),
     byMatOrigem: freqMap(rows, 'matOrigem'),
-    byDeclive: freqMap(rows, 'declive'),
+    byDeclive: freqMap(rows, 'declive').sort((a, b) => decliveSortKey(a.name) - decliveSortKey(b.name)),
     byDrenagem: freqMap(rows, 'drenagem'),
     byTextura: freqMap(rows, 'textura'),
-    byProfundSo: freqMap(rows, 'profundSo'),
+    byProfundSo: freqMap(rows, 'profundSo').sort((a, b) => depthSortKey(a.name) - depthSortKey(b.name)),
     byLegenda: freqMap(rows, 'legenda'),
     byIbgeN1: freqMap(rows, 'ibgeN1'),
     byIbgeN2: freqMap(rows, 'ibgeN2'),

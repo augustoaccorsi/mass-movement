@@ -19,15 +19,14 @@ const CHAR_MAP: Record<string, string> = {
 
 export function normalizeText(s: string): string {
   let out = s.trim();
-  // replace broken sequences
   out = out.replace(/Regol¡tico/g, 'Regolítico');
   out = out.replace(/h£mico/g, 'húmico');
+  out = out.replace(/lptico/g, 'léptico');   // #1 fix: lptico → léptico
   out = out.replace(/t¡pic/g, 'típic');
   out = out.replace(/alum¡nico/g, 'alumínico');
   out = out.replace(/aluminofrrico/g, 'aluminoférrico');
   out = out.replace(/mdia/g, 'média');
   out = out.replace(/Varzea/g, 'Várzea');
-  // generic map pass
   Object.entries(CHAR_MAP).forEach(([bad, good]) => {
     out = out.split(bad).join(good);
   });
@@ -38,4 +37,22 @@ export function normalizeText(s: string): string {
 export function normalizeDeclive(s: string): string {
   const base = normalizeText(s);
   return base.replace(/(\d+)\s*a\s*(\d+)/, '$1% a $2%');
+}
+
+/** Sort order for PROFUND_SO depth classes — #2 fix */
+const DEPTH_ORDER: Record<string, number> = {
+  '<50':  1,
+  '<150': 2,
+  '>250': 3,
+};
+
+export function depthSortKey(s: string): number {
+  return DEPTH_ORDER[s.trim()] ?? 99;
+}
+
+/** Sort order for declive range values — #3 fix */
+export function decliveSortKey(s: string): number {
+  // extract first number from "5% a 8%" or "5 a 8"
+  const match = s.match(/(\d+)/);
+  return match ? parseInt(match[1], 10) : 99;
 }
