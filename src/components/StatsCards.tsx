@@ -16,7 +16,7 @@ function Card({ label, value, sub, long }: CardProps) {
       <div
         title={value}
         className={[
-          'font-extrabold text-[#5c6e2e] dark:text-[#8a9a4b] leading-tight truncate',
+          'font-extrabold text-blue-600 dark:text-blue-400 leading-tight truncate',
           long ? 'text-sm sm:text-base' : 'text-2xl sm:text-3xl',
         ].join(' ')}
       >

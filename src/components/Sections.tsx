@@ -7,7 +7,7 @@ interface Props { data: ProcessedData; }
 function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex items-center gap-2 mb-4">
-      <span className="block w-1 h-5 rounded bg-[#5c6e2e] dark:bg-[#8a9a4b] shrink-0" />
+      <span className="block w-1 h-5 rounded bg-blue-600 dark:bg-blue-400 shrink-0" />
       <h2 className="text-sm sm:text-base font-bold text-slate-800 dark:text-slate-100">{children}</h2>
     </div>
   );

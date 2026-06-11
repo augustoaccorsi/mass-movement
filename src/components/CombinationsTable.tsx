@@ -44,7 +44,7 @@ export function CombinationsTable({ combinations, totalRows, totalUnique }: Prop
             value={search}
             onChange={e => setSearch(e.target.value)}
             placeholder={t('table.search')}
-            className="w-full pl-7 pr-3 py-1.5 text-xs rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-800 dark:text-slate-200 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-[#5c6e2e]"
+            className="w-full pl-7 pr-3 py-1.5 text-xs rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-800 dark:text-slate-200 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
           />
         </div>
         <p className="text-[0.65rem] text-slate-400 dark:text-slate-500 sm:hidden ml-auto">
@@ -76,12 +76,12 @@ export function CombinationsTable({ combinations, totalRows, totalUnique }: Prop
             ) : filtered.map((c, i) => (
               <tr key={i} className="border-b border-slate-100 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
                 <td className="px-3 py-2">
-                  <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-[#eef1e6] dark:bg-[#2e3d18] text-[#4a5c28] dark:text-[#8a9a4b] text-[0.65rem] font-bold">
+                  <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-blue-50 dark:bg-blue-950 text-blue-600 dark:text-blue-400 text-[0.65rem] font-bold">
                     {combinations.indexOf(c) + 1}
                   </span>
                 </td>
                 <td className="px-3 py-2">
-                  <span className="inline-block px-2 py-0.5 rounded-full bg-[#eef1e6] dark:bg-[#2e3d18] text-[#4a5c28] dark:text-[#8a9a4b] font-semibold text-[0.68rem]">
+                  <span className="inline-block px-2 py-0.5 rounded-full bg-blue-50 dark:bg-blue-950 text-blue-600 dark:text-blue-400 font-semibold text-[0.68rem]">
                     {c.unidade}
                   </span>
                 </td>
@@ -93,7 +93,7 @@ export function CombinationsTable({ combinations, totalRows, totalUnique }: Prop
                 </td>
                 <td className="px-3 py-2">
                   <div className="flex items-center gap-2">
-                    <div className="h-2 rounded-full bg-[#5c6e2e] dark:bg-[#8a9a4b] min-w-1" style={{ width: `${(c.count / max) * 72}px` }} />
+                    <div className="h-2 rounded-full bg-blue-500 dark:bg-blue-400 min-w-1" style={{ width: `${(c.count / max) * 72}px` }} />
                     <span className="text-slate-600 dark:text-slate-400">{c.pct.toFixed(1)}%</span>
                   </div>
                 </td>

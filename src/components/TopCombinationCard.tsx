@@ -10,13 +10,14 @@ export function TopCombinationCard({ top, totalRows }: Props) {
   const { t } = useTranslation();
 
   return (
-    <div className="relative overflow-hidden bg-linear-to-br from-[#4a5c28] to-[#2e3d18] dark:from-[#3d4f1e] dark:to-[#1e2a0e] rounded-xl p-5 shadow-md text-white mb-6">
+    <div className="relative overflow-hidden bg-gradient-to-br from-blue-600 to-blue-800 dark:from-blue-700 dark:to-blue-900 rounded-xl p-5 shadow-md text-white mb-6">
+      {/* background decoration */}
       <div className="absolute -right-8 -top-8 w-40 h-40 rounded-full bg-white/5" />
       <div className="absolute -right-2 -bottom-6 w-24 h-24 rounded-full bg-white/5" />
 
       <div className="relative">
         <div className="flex items-center gap-2 mb-3">
-          <span className="text-xs font-bold uppercase tracking-widest text-[#c8b882]">
+          <span className="text-xs font-bold uppercase tracking-widest text-blue-200">
             {t('highlight.label')}
           </span>
           <span className="text-xs font-bold bg-white/20 px-2 py-0.5 rounded-full">
@@ -37,13 +38,13 @@ export function TopCombinationCard({ top, totalRows }: Props) {
             <div className="text-4xl font-extrabold leading-none">
               {top.pct.toFixed(1)}%
             </div>
-            <div className="text-[#c8b882] text-xs mt-1">{t('highlight.ofTotal')}</div>
+            <div className="text-blue-200 text-xs mt-1">{t('highlight.ofTotal')}</div>
           </div>
           <div>
             <div className="text-2xl font-bold leading-none">
               {top.count.toLocaleString('pt-BR')}
             </div>
-            <div className="text-[#c8b882] text-xs mt-1">
+            <div className="text-blue-200 text-xs mt-1">
               {t('highlight.of')} {totalRows.toLocaleString('pt-BR')} {t('highlight.occurrences')}
             </div>
           </div>
