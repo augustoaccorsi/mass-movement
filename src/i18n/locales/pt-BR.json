@@ -23,10 +23,8 @@
     "unidade": "Unidade / Fácie Geológica",
     "soilTypes": "Tipos de Solo",
     "landCover": "Cobertura do Solo",
-    "terrain": "Características do Terreno",
-    "geology": "Material de Origem e Textura",
-    "drainage": "Drenagem e Profundidade",
-    "ibgeClasses": "Classificação IBGE"
+    "geology": "Material de Origem",
+    "slopeAula": "Declividade (calculada em aula)"
   },
   "charts": {
     "frequency": "Frequência (nº de ocorrências)",
@@ -37,7 +35,7 @@
     "unit": "Facie/Unidade",
     "soil": "Solo (EMBRAPA)",
     "origin": "Material de Origem",
-    "slope": "Declive (%)",
+    "slopeAula": "Declividade (Aula)",
     "drainage": "Drenagem",
     "texture": "Textura",
     "depth": "Profundidade do Solo",
@@ -52,8 +50,7 @@
     "unit": "Unidade/Fácie",
     "soil": "Solo",
     "origin": "Mat. Origem",
-    "slope": "Declive",
-    "slopeAula": "Decliv. Aula",
+    "slopeAula": "Declividade (Aula)",
     "drainage": "Drenagem",
     "texture": "Textura",
     "cover": "Cobertura",

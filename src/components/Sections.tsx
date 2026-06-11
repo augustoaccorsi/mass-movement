@@ -67,25 +67,8 @@ export function LandCoverSection({ data }: Props) {
         <ChartCard title={`${t('charts.legend')} — ${t('charts.frequency')}`}>
           <HorizontalBarChart data={data.byLegenda} dataKey="count" label={t('charts.occurrences')} colorOffset={2} />
         </ChartCard>
-        <ChartCard title={t('charts.ibgeN1')}>
-          <HorizontalBarChart data={data.byIbgeN1} dataKey="count" label={t('charts.occurrences')} maxItems={6} colorOffset={4} />
-        </ChartCard>
-      </div>
-    </div>
-  );
-}
-
-export function TerrainSection({ data }: Props) {
-  const { t } = useTranslation();
-  return (
-    <div className="my-6 sm:my-8">
-      <SectionTitle>{t('sections.terrain')}</SectionTitle>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-4">
-        <ChartCard title={t('charts.slope')}>
-          <HorizontalBarChart data={data.byDeclive} dataKey="count" label={t('charts.occurrences')} maxItems={10} colorOffset={6} />
-        </ChartCard>
-        <ChartCard title={t('charts.drainage')}>
-          <HorizontalBarChart data={data.byDrenagem} dataKey="count" label={t('charts.occurrences')} maxItems={6} colorOffset={9} />
+        <ChartCard title={`${t('charts.legend')} — ${t('charts.areaPct')}`}>
+          <DonutChart data={data.byLegenda} />
         </ChartCard>
       </div>
     </div>
@@ -98,28 +81,28 @@ export function GeologySection({ data }: Props) {
     <div className="my-6 sm:my-8">
       <SectionTitle>{t('sections.geology')}</SectionTitle>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-4">
-        <ChartCard title={t('charts.origin')}>
+        <ChartCard title={`${t('charts.origin')} — ${t('charts.frequency')}`}>
           <HorizontalBarChart data={data.byMatOrigem} dataKey="count" label={t('charts.occurrences')} colorOffset={1} />
         </ChartCard>
-        <ChartCard title={t('charts.texture')}>
-          <HorizontalBarChart data={data.byTextura} dataKey="count" label={t('charts.occurrences')} colorOffset={7} />
+        <ChartCard title={`${t('charts.origin')} — ${t('charts.areaPct')}`}>
+          <DonutChart data={data.byMatOrigem} />
         </ChartCard>
       </div>
     </div>
   );
 }
 
-export function DrainageSection({ data }: Props) {
+export function DeclivAulaSection({ data }: Props) {
   const { t } = useTranslation();
   return (
     <div className="my-6 sm:my-8">
-      <SectionTitle>{t('sections.drainage')}</SectionTitle>
+      <SectionTitle>{t('sections.slopeAula')}</SectionTitle>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-4">
-        <ChartCard title={t('charts.depth')}>
-          <HorizontalBarChart data={data.byProfundSo} dataKey="count" label={t('charts.occurrences')} colorOffset={5} />
+        <ChartCard title={`${t('charts.slopeAula')} — ${t('charts.frequency')}`}>
+          <HorizontalBarChart data={data.byDeclivAula} dataKey="count" label={t('charts.occurrences')} colorOffset={6} />
         </ChartCard>
-        <ChartCard title={t('charts.ibgeN2')}>
-          <HorizontalBarChart data={data.byIbgeN2} dataKey="count" label={t('charts.occurrences')} maxItems={8} colorOffset={11} />
+        <ChartCard title={`${t('charts.slopeAula')} — ${t('charts.areaPct')}`}>
+          <DonutChart data={data.byDeclivAula} />
         </ChartCard>
       </div>
     </div>

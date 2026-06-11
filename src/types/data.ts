@@ -3,13 +3,7 @@ export interface RawRow {
   unidade: string;
   soloEmbra: string;
   matOrigem: string;
-  declive: string;
-  drenagem: string;
-  textura: string;
-  profundSo: string;
   legenda: string;
-  ibgeN1: string;
-  ibgeN2: string;
   declivAula: number | null;
 }
 
@@ -20,16 +14,9 @@ export interface ProcessedData {
   byUnidade: FreqItem[];
   bySolo: FreqItem[];
   byMatOrigem: FreqItem[];
-  byDeclive: FreqItem[];
-  byDrenagem: FreqItem[];
-  byTextura: FreqItem[];
-  byProfundSo: FreqItem[];
   byLegenda: FreqItem[];
-  byIbgeN1: FreqItem[];
-  byIbgeN2: FreqItem[];
+  byDeclivAula: FreqItem[];
   topCombinations: CombinationItem[];
-  soloByLegenda: CrossItem[];
-  materiaByDeclive: CrossItem[];
 }
 
 export interface FreqItem {
@@ -44,10 +31,7 @@ export interface CombinationItem {
   unidade: string;
   solo: string;
   matOrigem: string;
-  declive: string;
   declivAula: number | null;
-  drenagem: string;
-  textura: string;
   legenda: string;
   count: number;
   pct: number;

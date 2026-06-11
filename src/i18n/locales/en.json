@@ -23,10 +23,8 @@
     "unidade": "Unit / Geological Facies",
     "soilTypes": "Soil Types",
     "landCover": "Land Cover",
-    "terrain": "Terrain Characteristics",
-    "geology": "Parent Material & Texture",
-    "drainage": "Drainage & Depth",
-    "ibgeClasses": "IBGE Classification"
+    "geology": "Parent Material",
+    "slopeAula": "Slope (calculated in class)"
   },
   "charts": {
     "frequency": "Frequency (no. of occurrences)",
@@ -37,7 +35,7 @@
     "unit": "Facies/Unit",
     "soil": "Soil (EMBRAPA)",
     "origin": "Parent Material",
-    "slope": "Slope (%)",
+    "slopeAula": "Slope (Class)",
     "drainage": "Drainage",
     "texture": "Texture",
     "depth": "Soil Depth",
@@ -52,8 +50,7 @@
     "unit": "Unit/Facies",
     "soil": "Soil",
     "origin": "Parent Mat.",
-    "slope": "Slope",
-    "slopeAula": "Slope (calc.)",
+    "slopeAula": "Slope (Class)",
     "drainage": "Drainage",
     "texture": "Texture",
     "cover": "Cover",

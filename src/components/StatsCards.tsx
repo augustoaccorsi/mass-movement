@@ -33,13 +33,8 @@ export function StatsCards({ data }: Props) {
   const { t } = useTranslation();
   const hectares = (data.totalArea / 10000).toLocaleString('pt-BR', { maximumFractionDigits: 1 });
   const uniqueCombos = new Set(
-    data.rows.map(r =>
-      [r.unidade, r.soloEmbra, r.matOrigem, r.declive, r.drenagem, r.textura, r.legenda].join('|')
-    )
+    data.rows.map(r => [r.unidade, r.soloEmbra, r.matOrigem, r.legenda].join('|'))
   ).size;
-
-  const dominantSoil = data.bySolo[0]?.name ?? '—';
-  const dominantCover = data.byLegenda[0]?.name ?? '—';
 
   return (
     <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-5 gap-3 sm:gap-4 my-6">
@@ -48,13 +43,13 @@ export function StatsCards({ data }: Props) {
       <Card label={t('stats.uniqueCombinations')} value={String(uniqueCombos)} sub={t('stats.ofVariables')} />
       <Card
         label={t('stats.dominantSoil')}
-        value={dominantSoil}
+        value={data.bySolo[0]?.name ?? '—'}
         sub={`${data.bySolo[0]?.pct.toFixed(1)}% das ocorrências`}
         long
       />
       <Card
         label={t('stats.dominantCover')}
-        value={dominantCover}
+        value={data.byLegenda[0]?.name ?? '—'}
         sub={`${data.byLegenda[0]?.pct.toFixed(1)}% das ocorrências`}
         long
       />

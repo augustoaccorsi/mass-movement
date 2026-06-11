@@ -15,9 +15,8 @@ import {
   UnidadeSection,
   SoilSection,
   LandCoverSection,
-  TerrainSection,
   GeologySection,
-  DrainageSection,
+  DeclivAulaSection,
 } from './components/Sections';
 
 type Theme = 'light' | 'dark';
@@ -115,9 +114,8 @@ export function App() {
         <UnidadeSection data={data} />
         <SoilSection data={data} />
         <LandCoverSection data={data} />
-        <TerrainSection data={data} />
         <GeologySection data={data} />
-        <DrainageSection data={data} />
+        <DeclivAulaSection data={data} />
       </div>
     </>
   );

@@ -1,5 +1,5 @@
 import Papa from 'papaparse';
-import { normalizeText, normalizeDeclive, depthSortKey, decliveSortKey } from './normalize';
+import { normalizeText } from './normalize';
 import type {
   RawRow,
   ProcessedData,
@@ -9,10 +9,7 @@ import type {
 
 type ParsedRecord = Record<string, string>;
 
-function freqMap(
-  rows: RawRow[],
-  key: keyof RawRow
-): FreqItem[] {
+function freqMap(rows: RawRow[], key: keyof RawRow): FreqItem[] {
   const counts: Record<string, { count: number; area: number }> = {};
   const totalArea = rows.reduce((s, r) => s + r.area, 0);
 
@@ -37,16 +34,13 @@ function freqMap(
 function topCombinations(rows: RawRow[], top = 15): CombinationItem[] {
   const map: Record<string, CombinationItem> = {};
   for (const r of rows) {
-    const key = [r.unidade, r.soloEmbra, r.matOrigem, r.declive, String(r.declivAula), r.drenagem, r.textura, r.legenda].join('||');
+    const key = [r.unidade, r.soloEmbra, r.matOrigem, String(r.declivAula), r.legenda].join('||');
     if (!map[key]) {
       map[key] = {
         unidade: r.unidade,
         solo: r.soloEmbra,
         matOrigem: r.matOrigem,
-        declive: r.declive,
         declivAula: r.declivAula,
-        drenagem: r.drenagem,
-        textura: r.textura,
         legenda: r.legenda,
         count: 0,
         pct: 0,
@@ -76,38 +70,23 @@ export async function loadData(): Promise<ProcessedData> {
   });
 
   const rows: RawRow[] = result.data.map((r: ParsedRecord) => ({
-    area: parseFloat(String(r['area (m2)']).replace(',', '.')),
+    area: parseFloat(String(r['area']).replace(',', '.')),
     unidade: normalizeText(r['UNIDADE'] ?? ''),
     soloEmbra: normalizeText(r['SOLO_EMBRA'] ?? ''),
     matOrigem: normalizeText(r['MAT_ORIGEM'] ?? ''),
-    declive: normalizeDeclive(r['DECLIVE'] ?? ''),
-    drenagem: normalizeText(r['DRENAGEM'] ?? ''),
-    textura: normalizeText(r['TEXTURA'] ?? ''),
-    profundSo: normalizeText(r['PROFUND_SO'] ?? ''),
     legenda: normalizeText(r['LEGENDA'] ?? ''),
-    ibgeN1: normalizeText(r['IBGE_N1'] ?? ''),
-    ibgeN2: normalizeText(r['IBGE_N2'] ?? ''),
-    declivAula: r['DECLIVIDADE_AULA'] ? parseInt(r['DECLIVIDADE_AULA'], 10) : null,
+    declivAula: r['Declividade (calculada em aula)'] ? parseInt(r['Declividade (calculada em aula)'], 10) : null,
   })).filter(r => !isNaN(r.area) && r.area > 0);
-
-  const totalArea = rows.reduce((s, r) => s + r.area, 0);
 
   return {
     rows,
     totalRows: rows.length,
-    totalArea,
+    totalArea: rows.reduce((s, r) => s + r.area, 0),
     byUnidade: freqMap(rows, 'unidade'),
     bySolo: freqMap(rows, 'soloEmbra'),
     byMatOrigem: freqMap(rows, 'matOrigem'),
-    byDeclive: freqMap(rows, 'declive').sort((a, b) => decliveSortKey(a.name) - decliveSortKey(b.name)),
-    byDrenagem: freqMap(rows, 'drenagem'),
-    byTextura: freqMap(rows, 'textura'),
-    byProfundSo: freqMap(rows, 'profundSo').sort((a, b) => depthSortKey(a.name) - depthSortKey(b.name)),
     byLegenda: freqMap(rows, 'legenda'),
-    byIbgeN1: freqMap(rows, 'ibgeN1'),
-    byIbgeN2: freqMap(rows, 'ibgeN2'),
+    byDeclivAula: freqMap(rows, 'declivAula').sort((a, b) => Number(a.name) - Number(b.name)),
     topCombinations: topCombinations(rows),
-    soloByLegenda: [],
-    materiaByDeclive: [],
   };
 }
